@@ -45,7 +45,7 @@ public class UploadActivity extends SherlockActivity {
 			}
 
 			CookieStore cookieStore = LoginActivity.getCookies(this);
-			new UploadTask().execute(new UploadTask.Input(getApplicationContext(), files, cookieStore));
+			new UploadTask(this, new Random().nextInt()).execute(new UploadTask.Input(getApplicationContext(), files, cookieStore));
 		} 
 		
 		//If the intent has multiple images
@@ -65,7 +65,7 @@ public class UploadActivity extends SherlockActivity {
 				}
 				
 				CookieStore cookieStore = LoginActivity.getCookies(this);
-				new UploadTask().execute(new UploadTask.Input(getApplicationContext(), files, cookieStore));
+				new UploadTask(this, new Random().nextInt()).execute(new UploadTask.Input(getApplicationContext(), files, cookieStore));
 			}
 		}
 	}
@@ -93,6 +93,39 @@ public class UploadActivity extends SherlockActivity {
 	}
 
 	private static class UploadTask extends AsyncTask<UploadTask.Input, UploadTask.Progress, Void> {
+		private final NotificationManager notificationManager;
+		private final Context context;
+		private final int notifID;
+
+		private UploadTask(Context context, int notifID) {
+			this.context = context;
+			this.notifID = notifID;
+			this.notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+		}
+
+		private UploadTask(Context context) {
+			this(context, new Random().nextInt());
+		}
+
+		@Override
+		protected void onPreExecute() {
+			super.onPreExecute();
+			
+			NotificationCompat.Builder builder = new NotificationCompat.Builder(context);
+			builder.setSmallIcon(R.drawable.ic_launcher);
+			builder.setContentTitle("Uploading...");
+			builder.setContentText("Please wait...");
+			builder.setOngoing(true);
+			Notification notif = builder.build();
+			notificationManager.notify(notifID, notif);
+		}
+
+		@Override
+		protected void onPostExecute(Void aVoid) {
+			super.onPostExecute(aVoid);
+			
+			notificationManager.cancel(notifID);
+		}
 
 		@Override
 		protected Void doInBackground(Input... params) {
@@ -137,7 +170,7 @@ public class UploadActivity extends SherlockActivity {
 				Bitmap largeIcon = BitmapFactory.decodeFile(value.image.getAbsolutePath());
 				builder.setLargeIcon(largeIcon);
 				builder.setOngoing(false);
-				builder.setAutoCancel(true);
+				builder.setAutoCancel(false);
 				
 				if (value.result.contains("http")) {
 					Intent intent = new Intent(Intent.ACTION_VIEW);
