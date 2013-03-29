@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory
+        android:title="My Account">
+        <Preference
+            android:key="username"
+            android:title="Username"
+            android:selectable="false"
+            android:summary="loading" />
+    <SwitchPreference android:disableDependentsState="true" android:enabled="true" android:selectable="true"/>
+    <SwitchPreference android:disableDependentsState="true" android:enabled="true" android:selectable="true"/>
+    <SwitchPreference android:disableDependentsState="true" android:enabled="true" android:selectable="true"/>
+    <SwitchPreference android:disableDependentsState="true" android:enabled="true" android:selectable="true"/>
+    <SwitchPreference android:disableDependentsState="true" android:enabled="true" android:selectable="true"/>
+    <SwitchPreference android:disableDependentsState="true" android:enabled="true" android:selectable="true"/>
+    <SwitchPreference android:disableDependentsState="true" android:enabled="true" android:selectable="true"/>
+        <Preference
+            android:key="capacity"
+            android:title="Capacity"
+            android:selectable="false"
+            android:summary="loading" />
+        <Preference
+            android:key="account_type"
+            android:title="Go Pro!"
+            android:selectable="true"
+            android:summary="loading" />
+        <Preference
+            android:key="sub_history"
+            android:title="Subscription History"
+            android:selectable="true"
+            android:summary="loading" />
+        <Preference
+            android:key="api_key"
+            android:title="Reset Api Key"
+            android:selectable="true"
+            android:summary="loading" />
+        <Preference
+            android:key="password"
+            android:selectable="true"
+            android:title="Change Password"
+            android:summary="loading" />
+    </PreferenceCategory>
+    <PreferenceCategory
+        android:title="My Pools">
+	    <Preference
+	        android:title="Default Pool"
+	        android:summary="loading"
+            android:selectable="true"
+	        android:key="defaultPool" />
+    </PreferenceCategory>
+    <PreferenceCategory
+        android:key="thirdPartySupport"
+        android:title="Third Party Support">\
+    </PreferenceCategory>
+</PreferenceScreen>

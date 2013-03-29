@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+    
+    <LinearLayout 
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/fragment_pool_nav"
+        android:gravity="center_horizontal"
+        android:layout_alignParentTop="true" >
+        
+        <Button
+            android:layout_width="0dip"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:enabled="false"
+            android:id="@+id/fragment_pool_nav_left"
+            android:text="←" />
+        
+        <Button
+            android:layout_width="0dip"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:enabled="false"
+            android:id="@+id/fragment_pool_nav_center"
+            android:text="1/1" />
+        
+        <Button
+            android:layout_width="0dip"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:enabled="false"
+            android:id="@+id/fragment_pool_nav_right"
+            android:text="→" />
+        
+    </LinearLayout>
+    
+    <LinearLayout 
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/fragment_pool_buttons"
+        android:gravity="center_horizontal"
+        android:visibility="gone"
+        android:layout_alignParentBottom="true" >
+        
+        <Button
+            android:layout_width="0dip"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:id="@+id/fragment_pool_delete"
+            android:text="Delete" />
+        
+        <Button
+            android:layout_width="0dip"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:id="@+id/fragment_pool_move"
+            android:text="Move" />
+        
+        <Button
+            android:layout_width="0dip"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:id="@+id/fragment_pool_share"
+            android:text="Share" />
+        
+    </LinearLayout>
+    
+    <TextView 
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="No Images In This Pool"
+        android:textSize="24dip"
+        android:visibility="gone"
+        android:layout_below="@id/fragment_pool_nav"
+        android:id="@+id/fragment_pool_empty"
+        android:gravity="center_horizontal"></TextView>
+    
+    <ListView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/fragment_pool_nav"
+        android:layout_above="@id/fragment_pool_buttons"
+        android:id="@android:id/list" />
+    
+</RelativeLayout>
