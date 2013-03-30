@@ -167,7 +167,9 @@ public class UploadActivity extends SherlockActivity {
 				NotificationCompat.Builder builder = new NotificationCompat.Builder(value.context);
 				builder.setContentTitle(value.result);
 				builder.setSmallIcon(R.drawable.ic_launcher);
-				Bitmap largeIcon = BitmapFactory.decodeFile(value.image.getAbsolutePath());
+				BitmapFactory.Options options = new BitmapFactory.Options();
+				options.inSampleSize = 4;
+				Bitmap largeIcon = BitmapFactory.decodeFile(value.image.getAbsolutePath(), options);
 				builder.setLargeIcon(largeIcon);
 				builder.setOngoing(false);
 				builder.setAutoCancel(false);
@@ -194,6 +196,8 @@ public class UploadActivity extends SherlockActivity {
 				notificationManager.notify(new Random().nextInt(), notification);
 			}
 		}
+		
+		
 
 		public static class Input {
 			public final Context context;
